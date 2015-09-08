@@ -10,6 +10,10 @@
     "test": "mocha --compilers js:babel/register",
     "auto-test": "mocha --compilers js:babel/register --watch"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/renke/lognest.git"
+  },
   "author": "Renke Grunwald <renke@renke.org> (http://renke.org)",
   "devDependencies": {
     "babel": "^5.8.23",
