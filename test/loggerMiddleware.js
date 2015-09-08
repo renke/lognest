@@ -3,8 +3,10 @@ import {expect} from "chai"
 import {EventEmitter} from "events";
 import {spy, stub, mock, assert} from "sinon";
 
-import Logger from "../Logger";
-import loggerMiddleware from "../loggerMiddleware"
+import bunyan from "bunyan";
+
+import Logger from "../src/Logger";
+import loggerMiddleware from "../src/loggerMiddleware"
 
 describe("loggerMiddleware", () => {
   let logger; // Unit under test
@@ -17,22 +19,17 @@ describe("loggerMiddleware", () => {
 
   beforeEach(() => {
     info = mock();
+    let createLogger = stub(bunyan, "createLogger");
 
     let child = payload => {
       return {info, child, payload, };
     }
 
-    let createLogger = stub();
     createLogger.returns({info, child});
-
-    Logger.__Rewire__("bunyan", {
-      createLogger,
-      stdSerializers: {},      
-    });
   });
 
   afterEach(() => {
-    Logger.__ResetDependency__("bunyan")
+    bunyan.createLogger.restore();
   });
 
   beforeEach(() => {

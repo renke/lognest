@@ -4,8 +4,9 @@
   "description": "Simple log correlation based on bunyan and continuation-local-storage",
   "main": "index.js",
   "scripts": {
-    "prepublish": "babel src --out-dir .",
-    "auto-test-compile": "babel src --out-dir . --watch --plugins rewire",
+    "prepublish": "npm run compile",
+    "compile": "babel src --out-dir .",
+
     "test": "mocha --compilers js:babel/register",
     "auto-test": "mocha --compilers js:babel/register --watch"
   },
@@ -13,7 +14,6 @@
   "devDependencies": {
     "babel": "^5.8.23",
     "babel-core": "^5.8.23",
-    "babel-plugin-rewire": "^0.1.21",
     "chai": "^3.2.0",
     "sinon": "^1.16.1"
   },

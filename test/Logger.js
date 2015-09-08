@@ -1,7 +1,9 @@
 import chai, {expect} from "chai"
 import {spy, stub, mock, assert} from "sinon";
 
-import Logger from "../Logger";
+import bunyan from "bunyan";
+
+import Logger from "../src/Logger";
 
 describe("Logger", () => {
   let info;
@@ -9,17 +11,12 @@ describe("Logger", () => {
   beforeEach(() => {
     info = mock();
 
-    let createLogger = stub();
+    let createLogger = stub(bunyan, "createLogger");
     createLogger.returns({info});
-
-    Logger.__Rewire__("bunyan", {
-      createLogger,
-      stdSerializers: {},
-    });
   });
 
   afterEach(() => {
-    Logger.__ResetDependency__("bunyan")
+    bunyan.createLogger.restore();
   });
 
   it("should pass message and payload to Bunyan", () => {
