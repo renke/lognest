@@ -1,9 +1,9 @@
 {
   "name": "lognest",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Simple log correlation based on bunyan and continuation-local-storage",
   "main": "index.js",
-  "license": "ISC",  
+  "license": "ISC",
   "scripts": {
     "prepublish": "npm run compile",
     "compile": "babel src --out-dir .",
