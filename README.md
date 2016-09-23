@@ -1,3 +1,5 @@
+__ATTENTION: This repository is currently unmaintained.__
+
 # lognest
 Simple log correlation based on bunyan and continuation-local-storage
 
